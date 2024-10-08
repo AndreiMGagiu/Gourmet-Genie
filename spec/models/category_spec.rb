@@ -23,9 +23,9 @@ RSpec.describe Category, type: :model do
     end
 
     context 'with a duplicate name' do
-      let(:existing_category_name) { "Duplicate Category #{Time.now.to_i}" }
-      let!(:existing_category) { create(:category, name: existing_category_name) }
-      let(:new_category) { build(:category, name: existing_category_name) }
+      let(:category_name) { 'Duplicate Category' }
+      let!(:existing_category) { create(:category, name: category_name) }
+      let(:new_category) { build(:category, name: category_name) }
 
       it 'is not valid' do
         expect(new_category).not_to be_valid
