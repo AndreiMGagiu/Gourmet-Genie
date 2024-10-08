@@ -1,0 +1,35 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/*'
+
+require:
+  - rubocop-factory_bot
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-thread_safety
+
+FactoryBot/CreateList:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/ArrayAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+RSpec/NestedGroups:
+  MaxNesting: 4
+  Include:
+    - spec/requests/*.rb
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
