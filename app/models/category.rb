@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+# Represents a category for recipes in the GourmetGenie application.
+#
+# A category is used to group recipes under a specific label, e.g: "Vegan",
+# "Dessert",etc. Each category must have a unique name.
+class Category < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+end
