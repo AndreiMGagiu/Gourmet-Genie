@@ -10,6 +10,8 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-thread_safety
+  - rubocop-rspec_rails
+  - rubocop-capybara
 
 FactoryBot/CreateList:
   Enabled: false

@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry-nav', '~> 1.0'
   gem 'pry-rails', '~> 0.3'
   gem 'factory_bot_rails'
+  gem 'faker', '~> 3.4', '>= 3.4.2'
 
   # Code critics
   gem 'rubocop', '~> 1.66', require: false

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Represents a category for recipes in the GourmetGenie application.
+# Represents a category for recipes.
 #
 # A category is used to group recipes under a specific label, e.g: "Vegan",
 # "Dessert",etc. Each category must have a unique name.
