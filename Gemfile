@@ -54,6 +54,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 6.0'
   gem 'database_cleaner-active_record', '~> 2.1'
   gem "capybara"
   gem "selenium-webdriver"

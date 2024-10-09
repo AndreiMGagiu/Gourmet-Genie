@@ -6,4 +6,5 @@
 # "Dessert",etc. Each category must have a unique name.
 class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+  has_many :recipes, dependent: :destroy
 end
