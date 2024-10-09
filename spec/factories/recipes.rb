@@ -17,7 +17,7 @@ FactoryBot.define do
     end
 
     trait :medium do
-      cook_time { rand(20..40) }
+      cook_time { rand(20..30) }
       prep_time { rand(10..20) }
     end
 

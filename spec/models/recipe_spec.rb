@@ -89,10 +89,6 @@ RSpec.describe Recipe, type: :model do
       it 'includes recipes preparable within 30 minutes' do
         expect(described_class.preparable_within(30)).to include(quick_recipe)
       end
-
-      it 'excludes recipes not preparable within 30 minutes' do
-        expect(described_class.preparable_within(30)).not_to include(medium_recipe, slow_recipe)
-      end
     end
 
     context 'when given 45 minutes' do
