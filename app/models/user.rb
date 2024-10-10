@@ -2,7 +2,7 @@
 
 # Represents an author who creates recipes.
 #
-class Author < ApplicationRecord
+class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   has_many :recipes, dependent: :destroy
 end

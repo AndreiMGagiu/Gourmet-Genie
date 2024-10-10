@@ -6,7 +6,7 @@
 # with a category and an author, and includes details such as title, cook time, and prep time.
 class Recipe < ApplicationRecord
   belongs_to :category
-  belongs_to :author
+  belongs_to :user
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_many :recipe_dietary_requirements, dependent: :destroy

@@ -9,7 +9,7 @@ FactoryBot.define do
     image { "https://example.com/food_images/#{rand(1..100)}.jpg" }
 
     association :category
-    association :author
+    association :user
 
     trait :quick do
       cook_time { rand(5..15) }
