@@ -50,6 +50,10 @@ RSpec.describe Recipe, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:category) }
     it { is_expected.to belong_to(:author) }
+    it { is_expected.to have_many(:recipe_ingredients).dependent(:destroy) }
+    it { is_expected.to have_many(:ingredients).through(:recipe_ingredients) }
+    it { is_expected.to have_many(:recipe_dietary_requirements).dependent(:destroy) }
+    it { is_expected.to have_many(:dietary_requirements).through(:recipe_dietary_requirements) }
   end
 
   describe 'scopes' do

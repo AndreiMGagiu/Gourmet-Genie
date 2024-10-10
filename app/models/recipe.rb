@@ -7,8 +7,10 @@
 class Recipe < ApplicationRecord
   belongs_to :category
   belongs_to :author
-  has_many :recipe_ingredients
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
+  has_many :recipe_dietary_requirements, dependent: :destroy
+  has_many :dietary_requirements, through: :recipe_dietary_requirements
 
   validates :title, presence: true
   validates :cook_time, numericality: { greater_than_or_equal_to: 0, allow_nil: false }
