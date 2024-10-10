@@ -41,7 +41,7 @@ group :development, :test do
   gem 'faker', '~> 3.4', '>= 3.4.2'
 
   # Code critics
-  gem 'rubocop', '~> 1.66', require: false
+  gem 'rubocop', '~> 1.66', '>= 1.66.1', require: false
   gem 'rubocop-factory_bot', '~> 2.26', require: false
   gem 'rubocop-performance', '~> 1.19', require: false
   gem 'rubocop-rails', '~> 2.21', require: false

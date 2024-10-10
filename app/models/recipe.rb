@@ -3,7 +3,7 @@
 # Represents a recipe in the application.
 #
 # A recipe is a set of instructions used for preparing and cooking food. It is associated
-# with a category and an author, and includes details such as title, cook time, and prep time.
+# with a category and a user, and includes details such as title, cook time, and prep time.
 class Recipe < ApplicationRecord
   belongs_to :category
   belongs_to :user
@@ -11,6 +11,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_many :recipe_dietary_requirements, dependent: :destroy
   has_many :dietary_requirements, through: :recipe_dietary_requirements
+  has_many :ratings, dependent: :destroy
 
   validates :title, presence: true
   validates :cook_time, numericality: { greater_than_or_equal_to: 0, allow_nil: false }
@@ -25,5 +26,9 @@ class Recipe < ApplicationRecord
   # @return [ActiveRecord::Relation] Recipes that can be prepared within the given time
   def self.preparable_within(minutes)
     where('cook_time <= ? AND prep_time <= ?', minutes, minutes)
+  end
+
+  def average_rating
+    ratings.average(:score).to_f.round(2)
   end
 end

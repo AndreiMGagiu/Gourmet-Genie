@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# spec/models/ingredient_spec.rb
 require 'rails_helper'
 
 RSpec.describe Ingredient, type: :model do

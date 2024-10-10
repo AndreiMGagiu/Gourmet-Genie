@@ -333,7 +333,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   rspec-rails (~> 6.1)
-  rubocop (~> 1.66)
+  rubocop (~> 1.66, >= 1.66.1)
   rubocop-factory_bot (~> 2.26)
   rubocop-performance (~> 1.19)
   rubocop-rails (~> 2.21)
