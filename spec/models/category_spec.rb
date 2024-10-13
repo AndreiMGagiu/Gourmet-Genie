@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Category, type: :model do
+RSpec.describe Category do
   describe 'validations' do
     context 'with a valid category name' do
       subject(:category) { build(:category, name: 'Unique Category') }

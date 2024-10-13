@@ -8,8 +8,8 @@ FactoryBot.define do
     cuisine { %w[Italian Mexican Japanese Indian French].sample }
     image { "https://example.com/food_images/#{rand(1..100)}.jpg" }
 
-    association :category
-    association :user
+    category
+    user
 
     trait :quick do
       cook_time { rand(5..15) }

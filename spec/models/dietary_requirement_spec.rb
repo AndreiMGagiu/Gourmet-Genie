@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe DietaryRequirement, type: :model do
+RSpec.describe DietaryRequirement do
   describe 'validations' do
-    subject { FactoryBot.create(:dietary_requirement) }
+    subject { create(:dietary_requirement) }
 
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_uniqueness_of(:name) }

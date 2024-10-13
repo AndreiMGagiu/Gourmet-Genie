@@ -11,5 +11,4 @@ class Rating < ApplicationRecord
 
   validates :score, presence: true, inclusion: { in: 1..5 }
   validates :user_id, uniqueness: { scope: :recipe_id, message: 'can only rate a recipe once' }
-
 end

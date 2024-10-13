@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Ingredient, type: :model do
+RSpec.describe Ingredient do
   describe 'validations' do
     context 'with valid attributes' do
       subject(:ingredient) { build(:ingredient) }

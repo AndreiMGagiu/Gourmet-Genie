@@ -1,0 +1,94 @@
+categories:
+  Italian:
+    - pasta
+    - pizza
+    - risotto
+    - lasagna
+    - spaghetti
+    - penne
+    - fettuccine
+  Mexican:
+    - taco
+    - burrito
+    - enchilada
+    - salsa
+    - guacamole
+    - quesadilla
+  Asian:
+    - soy sauce
+    - rice
+    - noodle
+    - stir fry
+    - wok
+    - tofu
+    - sesame
+  Indian:
+    - curry
+    - masala
+    - naan
+    - tandoori
+    - tikka
+    - biryani
+  Dessert:
+    - cake
+    - cookie
+    - pie
+    - ice cream
+    - sweet
+    - chocolate
+  Breakfast:
+    - egg
+    - bacon
+    - pancake
+    - waffle
+    - oatmeal
+    - cereal
+    - cake
+    - pie
+    - ice cream
+    - sweet  
+  Vegetarian:
+    - vegetarian
+    - vegan
+    - plant-based
+  Seafood:
+    - fish
+    - shrimp
+    - salmon
+    - tuna
+    - cod
+    - seafood
+  Soup:
+    - soup
+    - stew
+    - chowder
+    - broth
+  Salad:
+    - salad
+    - lettuce
+    - vinaigrette
+    - dressing
+  Grill:
+    - grill
+    - barbecue
+    - bbq
+    - roast
+  Baking:
+    - bread
+    - muffin
+    - bake
+    - pastry
+    - dough
+    - cookie
+  Slow Cooker:
+    - slow cooker
+    - crock pot
+    - slow cook  
+cooking_methods:
+  - bake
+  - fry
+  - grill
+  - roast
+  - boil
+  - steam
+  - slow cooker
