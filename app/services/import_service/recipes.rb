@@ -72,7 +72,7 @@ module ImportService
     def find_or_create_category
       return Category.find_or_create_by!(name: data['category']) if data['category'].present?
 
-      ImportService::RecipeCategorizer.find_or_create(data)
+      ImportService::RecipeCategorizer.new(data).find_or_create
     end
 
     # Finds or creates a user based on the recipe author. If no author is provided, a default 'John Doe' is used.

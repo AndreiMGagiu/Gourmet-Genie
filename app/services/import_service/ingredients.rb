@@ -12,11 +12,11 @@ module ImportService
     # Initializes the Ingredients processor with a recipe and ingredient string.
     #
     # @param recipe [Recipe] The recipe associated with the ingredient.
-    # @param ingredient_string [String] The ingredient string to be processed.
-    def initialize(recipe, ingredient_string)
+    # @param ingredient [String] The ingredient string to be processed.
+    def initialize(recipe, ingredient)
       @recipe = recipe
-      @ingredient_string = ingredient_string.strip
-      @components = @ingredient_string.split
+      @ingredient = ingredient.strip
+      @components = @ingredient.split
     end
 
     # Imports the ingredient into the database and returns the RecipeIngredient instance.
@@ -32,7 +32,7 @@ module ImportService
         ri.update(quantity: extract_quantity, unit: extract_unit)
       end
     rescue StandardError => error
-      Rails.logger.error("Failed to import ingredient: #{@ingredient_string}, error: #{error.message}")
+      Rails.logger.error("Failed to import ingredient: #{@ingredient}, error: #{error.message}")
       raise
     end
 
