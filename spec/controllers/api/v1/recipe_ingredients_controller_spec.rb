@@ -17,6 +17,7 @@ RSpec.describe Api::V1::RecipeIngredientsController do
     end
     let(:rating_john) { create(:rating, recipe: recipe, score: 5, user: user) }
     let(:rating_jane) { create(:rating, recipe: recipe, score: 4, user: create(:user, name: 'Jane Doe')) }
+    let(:app) { create(:app) }
 
     context 'when the recipe exists' do
       before do
@@ -24,6 +25,8 @@ RSpec.describe Api::V1::RecipeIngredientsController do
         recipe_ingredient_garlic
         rating_john
         rating_jane
+
+        request.headers['AppToken'] = app.secret_token
         get :show, params: { id: recipe.id }
       end
 
@@ -64,13 +67,16 @@ RSpec.describe Api::V1::RecipeIngredientsController do
     end
 
     context 'when the recipe does not exist' do
-      it 'returns a not_found status' do
+      before do
+        request.headers['AppToken'] = app.secret_token
         get :show, params: { id: 'nonexistent-id' }
+      end
+
+      it 'returns a not_found status' do
         expect(response).to have_http_status(:not_found)
       end
 
       it 'returns the correct error message' do
-        get :show, params: { id: 'nonexistent-id' }
         json_response = response.parsed_body
         expect(json_response['error']).to eq('Recipe not found')
       end

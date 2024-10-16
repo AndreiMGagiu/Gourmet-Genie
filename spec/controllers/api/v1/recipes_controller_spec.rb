@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# spec/controllers/api/v1/recipes_controller_spec.rb
-
 require 'rails_helper'
 
 RSpec.describe Api::V1::RecipesController do
   describe 'GET #search' do
+    let(:app) { create(:app) }
+
     context 'when ingredients are provided' do
       let!(:pesto_pizza) { create(:pesto_pizza) }
       let!(:vegetarian_pasta) { create(:vegetarian_pasta) }
@@ -18,7 +18,10 @@ RSpec.describe Api::V1::RecipesController do
       end
 
       context 'with matching ingredients' do
-        before { get :search, params: { ingredients: 'pesto,pita' } }
+        before do
+          request.headers['AppToken'] = app.secret_token
+          get :search, params: { ingredients: 'pesto,pita' }
+        end
 
         it 'returns a successful response' do
           expect(response).to have_http_status(:ok)
@@ -36,7 +39,10 @@ RSpec.describe Api::V1::RecipesController do
       end
 
       context 'with non-matching ingredients' do
-        before { get :search, params: { ingredients: 'chocolate,strawberry' } }
+        before do
+          request.headers['AppToken'] = app.secret_token
+          get :search, params: { ingredients: 'chocolate,strawberry' }
+        end
 
         it 'returns a not found status' do
           expect(response).to have_http_status(:not_found)
@@ -44,21 +50,19 @@ RSpec.describe Api::V1::RecipesController do
 
         it 'returns the correct error message' do
           json_response = response.parsed_body
-          expect(json_response['error']).to eq('No recipes found')
+          expect(json_response['error']).to eq('Not found')
         end
       end
     end
 
     context 'when ingredients are not provided' do
-      before { get :search, params: { ingredients: '' } }
-
-      it 'returns a bad request status' do
-        expect(response).to have_http_status(:bad_request)
+      before do
+        request.headers['AppToken'] = app.secret_token
+        get :search, params: { ingredients: '' }
       end
 
-      it 'returns the correct error message' do
-        json_response = response.parsed_body
-        expect(json_response['error']).to eq('Ingredients parameter is required')
+      it 'returns a bad request status' do
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

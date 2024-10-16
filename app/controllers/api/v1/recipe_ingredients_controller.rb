@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class RecipeIngredientsController < ApplicationController
+    class RecipeIngredientsController < BaseController
       before_action :set_recipe, only: [:show]
 
       rescue_from ActiveRecord::RecordNotFound, with: :render_recipe_not_found
@@ -66,7 +66,7 @@ module Api
       #
       # @return [JSON] The error response with a 404 status code.
       def render_recipe_not_found
-        render json: { error: 'Recipe not found' }, status: :not_found
+        render_not_found('Recipe not found') # Use the helper method here
       end
     end
   end
