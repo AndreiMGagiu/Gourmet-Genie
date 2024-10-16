@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# lib/tasks/import_recipes.rake
-
 namespace :import do
   desc 'Import recipes from JSON file and process them'
   task recipes: :environment do
