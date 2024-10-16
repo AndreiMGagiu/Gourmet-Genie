@@ -60,9 +60,31 @@ module ImportService
         cook_time: data['cook_time'],
         prep_time: data['prep_time'],
         cuisine: data['cuisine'],
-        image: data['image'],
+        image: sanitize_image_url(data['image']),
         category: find_or_create_category
       )
+    end
+
+    # Sanitizes the image URL by extracting the actual URL if it is wrapped in a service URL.
+    #
+    # @param image_url [String] The potentially double-encoded image URL.
+    # @return [String] The sanitized image URL.
+    def sanitize_image_url(image_url)
+      return if image_url.blank?
+
+      # Decode and extract the actual image URL if it's wrapped in a service URL
+      extracted_url = extract_image_url(image_url)
+      extracted_url || image_url
+    end
+
+    # Extracts the actual image URL from the service-wrapped URL.
+    #
+    # @param wrapped_url [String] The service-wrapped URL containing the actual image URL.
+    # @return [String, nil] The extracted actual image URL, or nil if not found.
+    def extract_image_url(wrapped_url)
+      uri = URI.parse(wrapped_url)
+      params = CGI.parse(uri.query || '')
+      params['url']&.first # Extract the real image URL from the service-wrapped URL
     end
 
     # Finds or creates a category for the recipe based on the category name in the data.
