@@ -55,6 +55,7 @@ end
 
 group :development do
   gem 'web-console'
+  gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
