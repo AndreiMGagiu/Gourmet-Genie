@@ -23,9 +23,11 @@ Before you begin, ensure you have the following installed:
 
 ## Installation
 
-1. Clone the repository: 
-`git clone git@github.com:AndreiMGagiu/Gourmet-Genie.git`,
-    `cd gourmet-genie`
+1. Clone the repository:
+```bash 
+ git clone git@github.com:AndreiMGagiu/Gourmet-Genie.git
+ cd gourmet-genie
+```
 
 2. Install dependencies: `bundle install`
 
@@ -35,8 +37,10 @@ Copy the `.env.example` file to `.env` and fill in the necessary environment var
 ## Database Setup
 1. Create the database: `rails db:create`
 2. Run migrations: `rails db:migrate`
-3. Enable the `pg_trgm` extension: 
-    `psql -d your_database_name -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'`
+3. Enable the `pg_trgm` extension:
+```bash  
+psql -d your_database_name -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm;'
+```
 
 ## Importing Data
 To import recipe data, run the following rake task: `rails import:recipes`
@@ -47,8 +51,10 @@ Start the Rails server:
     `rails server`. The application will be available at `http://localhost:3000`.
 
 ## API Endpoints
-- `GET /api/v1/recipes/search?ingredients=ingredient1,ingredient2`: Search for recipes by ingredients
-- `GET /api/v1/recipes/:id/ingredients`: Get ingredients, category, and ratings for a specific recipe
+```base
+ GET /api/v1/recipes/search?ingredients=ingredient1,ingredient2: Search for recipes by ingredients
+ GET /api/v1/recipes/:id/ingredients: Get ingredients, category, and ratings for a specific recipe
+```
 
 ## Running Tests
 To run the test suite: `rspec`
