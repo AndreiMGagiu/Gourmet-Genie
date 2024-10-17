@@ -13,6 +13,7 @@ The React client application can be found here: https://github.com/AndreiMGagiu/
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
 - [Running Tests](#running-tests)
+- [Recipe Search Overview](#recipe-search-overview)
 
 ## Prerequisites
 
@@ -60,3 +61,8 @@ Start the Rails server:
 
 ## Running Tests
 To run the test suite: `rspec`
+
+## Recipe Search Overview
+In V1 of Gourmet Genie, the search algorithm is designed to find recipes based on ingredients without needing an exact match. It looks for recipes that contain some or all of the ingredients you enter by using similarity matching. This means even if the ingredient names don’t perfectly match, the app can still suggest relevant recipes.
+
+For this first version, I kept it simple and flexible so users can quickly get helpful results.
