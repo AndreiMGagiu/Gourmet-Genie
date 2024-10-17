@@ -4,6 +4,8 @@ Gourmet Genie is a Rails backend application that helps users find recipes based
 
 The React client application can be found here: https://github.com/AndreiMGagiu/Gourmet-Genie-Client
 
+Live app can be found here: https://gourmet-genie-app.fly.dev
+
 ## Table of Contents
 
 - [User Stories](#user-stories)
