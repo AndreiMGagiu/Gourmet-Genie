@@ -4,15 +4,6 @@ Gourmet Genie is a Rails backend application that helps users find recipes based
 
 The React client application can be found here: https://github.com/AndreiMGagiu/Gourmet-Genie-Client
 
-## User Stories:
-1. As a user, I want to search for recipes based on the ingredients I have, even if the match isn't exact, so that I can find useful meal suggestions without needing all the exact ingredients.
-
-2. As a user, I want to filter recipes by quick meals that can be made in 15 minutes or less, so that I can prepare something fast when I'm short on time.
-
-3. As a user, I want to filter recipes by vegan options so that I can easily find meals that align with my dietary preferences.
-
-4. As a user, I want to filter recipes by vegetarian options so that I can discover recipes that fit my vegetarian diet.
-
 ## Table of Contents
 
 - [User Stories](#user-stories)
@@ -25,6 +16,15 @@ The React client application can be found here: https://github.com/AndreiMGagiu/
 - [Running Tests](#running-tests)
 - [Recipe Search Overview](#recipe-search-overview)
 - [Database Structure](#database-structure)
+
+## User Stories:
+1. As a user, I want to search for recipes based on the ingredients I have, even if the match isn't exact, so that I can find useful meal suggestions without needing all the exact ingredients.
+
+2. As a user, I want to filter recipes by quick meals that can be made in 15 minutes or less, so that I can prepare something fast when I'm short on time.
+
+3. As a user, I want to filter recipes by vegan options so that I can easily find meals that align with my dietary preferences.
+
+4. As a user, I want to filter recipes by vegetarian options so that I can discover recipes that fit my vegetarian diet.
 
 ## Prerequisites
 
