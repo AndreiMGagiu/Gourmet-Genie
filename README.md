@@ -1,6 +1,6 @@
 # Gourmet Genie
 
-Gourmet Genie is a Rails application that helps users find recipes based on ingredients they have at home. It provides a powerful search functionality and ingredient matching system to suggest the best recipes for users.
+Gourmet Genie is a Rails backend application that helps users find recipes based on ingredients they have at home. It provides a powerful search functionality and ingredient matching system to suggest the best recipes for users.
 
 ## Table of Contents
 
