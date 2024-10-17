@@ -14,6 +14,7 @@ The React client application can be found here: https://github.com/AndreiMGagiu/
 - [API Endpoints](#api-endpoints)
 - [Running Tests](#running-tests)
 - [Recipe Search Overview](#recipe-search-overview)
+- [Database Structure](#database-structure)
 
 ## Prerequisites
 
@@ -66,3 +67,14 @@ To run the test suite: `rspec`
 In V1 of Gourmet Genie, the search algorithm is designed to find recipes based on ingredients without needing an exact match. It looks for recipes that contain some or all of the ingredients you enter by using similarity matching. This means even if the ingredient names don’t perfectly match, the app can still suggest relevant recipes.
 
 For this first version, I kept it simple and flexible so users can quickly get helpful results.
+
+## Database Structure
+1. **User**: Represents users who create recipes. Each user has a unique name and can have multiple `recipes` and `ratings`.
+2. **Recipe**: The core model representing recipes. Each recipe belongs to a `user` and a `category`, and `has_many ingredients` through `recipe_ingredients`. It also `has_many dietary requirements` through `recipe_dietary_requirements` and can have multiple `ratings`.
+3. **Category**: Used to group recipes under specific labels (e.g., "Vegan", "Dessert").
+4. **Ingredient**: Represents individual ingredients used in recipes.
+5. **RecipeIngredient**: A join table connecting `recipes` and `ingredients`, including quantity and unit information.
+6. **DietaryRequirement**: Represents dietary restrictions or preferences (e.g., "Vegetarian", "Gluten-Free").
+7. **RecipeDietaryRequirement**: A join table connecting `recipes` and `dietary requirements`.
+8. **Rating**: Represents user ratings for recipes, with a score between 1 and 5.
+9. **App**: Represents applications that can access the API, including a secret token and approval status.
