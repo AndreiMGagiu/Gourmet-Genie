@@ -1,0 +1,14 @@
+---
+Vegetarian:
+  - vegetarian
+  - no-meat
+Vegan:
+  - vegan
+  - no-dairy
+  - no-egg
+Gluten-Free:
+  - gluten-free
+  - no-gluten
+Dairy-Free:
+  - dairy-free
+  - no-dairy

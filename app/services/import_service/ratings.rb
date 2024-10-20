@@ -8,9 +8,9 @@ module ImportService
     # @param recipe [Recipe] The recipe being rated
     # @param score [Float] The raw score for the rating
     # @param user [User] The user who provided the rating
-    def initialize(recipe, score, user)
+    def initialize(recipe:, rating:, user:)
       @recipe = recipe
-      @score = score.to_f
+      @rating = rating.to_f
       @user = user
     end
 
@@ -24,14 +24,14 @@ module ImportService
 
     private
 
-    attr_reader :recipe, :score, :user
+    attr_reader :recipe, :rating, :user
 
     # Prepares the attributes for creating a new Rating
     #
     # @return [Hash] The attributes to be used when creating the Rating record
     def attributes
       {
-        score: normalized_score,
+        score: normalized_rating,
         recipe: recipe,
         user: user
       }
@@ -40,8 +40,8 @@ module ImportService
     # Normalizes the score to a value between 1 and 5
     #
     # @return [Integer] The normalized score, clamped between 1 and 5
-    def normalized_score
-      score.round.clamp(1, 5)
+    def normalized_rating
+      rating.round.clamp(1, 5)
     end
   end
 end

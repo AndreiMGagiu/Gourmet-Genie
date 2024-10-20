@@ -90,40 +90,24 @@ module ImportService
     # @param [String] keyword The keyword to evaluate against the recipe.
     # @return [Integer] The score for the keyword (0-3 points).
     def calculate_keyword_score(keyword)
-      score_from_title(keyword) + score_from_ingredients(keyword)
+      match_score(keyword, recipe_title) + match_score(keyword, recipe_ingredients.join(' '), 1, 0.5)
     end
 
-    # Assigns a score for the keyword based on its match in the recipe's title.
-    # Exact matches contribute 3 points, while partial matches (the keyword appears but not as an exact word) contribute 2 points.
+    # Determines the score based on exact or partial matches.
     #
-    # @param [String] keyword The keyword to search for in the recipe title.
-    # @return [Integer] The score for the keyword (0-3 points).
-    def score_from_title(keyword)
-      return 3 if exact_match?(keyword, recipe_title)
-      return 2 if partial_match?(keyword, recipe_title)
+    # @param [String] keyword The keyword to evaluate against the recipe.
+    # @param [String] text The text to check for the keyword.
+    # @param [Integer] exact_points Points for an exact match (default is 3).
+    # @param [Integer] partial_points Points for a partial match (default is 2).
+    # @return [Integer] The score for the keyword in the text.
+    def match_score(keyword, text, exact_points = 3, partial_points = 2)
+      return exact_points if exact_match?(keyword, text)
+      return partial_points if partial_match?(keyword, text)
 
       0
     end
 
-    # Assigns a score for the keyword based on its match in the recipe's ingredients.
-    # Exact matches in any ingredient contribute 1 point, while partial matches contribute 0.5 points.
-    #
-    # @param [String] keyword The keyword to search for in the recipe ingredients.
-    # @return [Integer] The score for the keyword (0-1 points).
-    def score_from_ingredients(keyword)
-      recipe_ingredients.sum do |ingredient|
-        if exact_match?(keyword, ingredient)
-          1
-        elsif partial_match?(keyword, ingredient)
-          0.5
-        else
-          0
-        end
-      end
-    end
-
     # Determines whether the keyword is an exact match with any word in the given text.
-    # For example, the keyword 'bread' would be an exact match in 'banana bread'.
     #
     # @param [String] keyword The keyword to search for.
     # @param [String] text The text to search within.

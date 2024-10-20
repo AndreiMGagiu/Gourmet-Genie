@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe ImportService::Ratings do
   let(:recipe) { create(:recipe) }
   let(:user) { create(:user) }
-  let(:score) { 4.5 }
-  let(:service) { described_class.new(recipe, score, user) }
+  let(:rating) { 4.5 }
+  let(:service) { described_class.new(recipe:, rating:, user:) }
 
   describe '#import' do
     subject(:import) { service.import }
@@ -31,7 +31,7 @@ RSpec.describe ImportService::Ratings do
 
     context 'when the rating already exists for the user and recipe' do
       before do
-        create(:rating, user: user, recipe: recipe, score: 3)
+        create(:rating, user:, recipe:, score: 3)
       end
 
       it 'raises an ActiveRecord::RecordInvalid error' do
@@ -40,35 +40,35 @@ RSpec.describe ImportService::Ratings do
     end
   end
 
-  describe '#normalized_score' do
-    subject(:normalized_score) { service.send(:normalized_score) }
+  describe '#normalized_rating' do
+    subject(:normalized_rating) { service.send(:normalized_rating) }
 
-    context 'when score is below 1' do
-      let(:score) { 0.5 }
+    context 'when rating is below 1' do
+      let(:rating) { 0.5 }
 
       it { is_expected.to eq(1) }
     end
 
-    context 'when score is above 5' do
-      let(:score) { 5.5 }
+    context 'when rating is above 5' do
+      let(:rating) { 5.5 }
 
       it { is_expected.to eq(5) }
     end
 
-    context 'when score is between 1 and 5' do
-      let(:score) { 3.4 }
+    context 'when rating is between 1 and 5' do
+      let(:rating) { 3.4 }
 
       it { is_expected.to eq(3) }
     end
 
-    context 'when score is exactly 1' do
-      let(:score) { 1.0 }
+    context 'when rating is exactly 1' do
+      let(:rating) { 1.0 }
 
       it { is_expected.to eq(1) }
     end
 
-    context 'when score is exactly 5' do
-      let(:score) { 5.0 }
+    context 'when rating is exactly 5' do
+      let(:rating) { 5.0 }
 
       it { is_expected.to eq(5) }
     end

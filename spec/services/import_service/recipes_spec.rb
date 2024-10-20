@@ -95,7 +95,7 @@ RSpec.describe ImportService::Recipes do
           imported_recipe
         end.to raise_error(ActiveRecord::RecordNotUnique)
 
-        expect(Rails.logger).to have_received(:error).with(/Failed to import recipe:/)
+        expect(Rails.logger).to have_received(:error).with(/Failed to import recipe 'Golden Sweet Cornbread' by user 'bluegirl': Record already exists/)
       end
 
       it 're-raises the RecordNotUnique error' do
